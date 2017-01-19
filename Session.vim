@@ -8,7 +8,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +26 Gemfile
-badd +1 config/routes.rb
+badd +6 config/routes.rb
 badd +10 db/migrate/20170117190642_devise_create_users.rb
 badd +25 config/environments/development.rb
 badd +1 app/assets/javascripts/application.js
@@ -24,6 +24,15 @@ badd +0 db/migrate/20170117203127_create_tasks.rb
 badd +0 db/migrate/20170117203345_create_pomodoros.rb
 badd +1 app/models/pomodoro_log.rb
 badd +0 db/migrate/20170117204809_create_pomodoro_logs.rb
+badd +15 app/controllers/tasks_controller.rb
+badd +2 app/views/tasks/index.html.erb
+badd +35 app/views/users/registrations/new.html.erb
+badd +0 config/initializers/devise.rb
+badd +10 app/controllers/application_controller.rb
+badd +0 app/views/tasks/new.html.erb
+badd +25 app/views/users/shared/_links.html.erb
+badd +0 app/assets/stylesheets/main.css
+badd +0 config/initializers/assets.rb
 argglobal
 silent! argdel *
 set stal=2
@@ -35,6 +44,10 @@ wincmd _ | wincmd |
 vsplit
 2wincmd h
 wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 set nosplitbelow
 wincmd t
@@ -68,12 +81,12 @@ setlocal fdn=20
 setlocal fen
 1
 normal! zo
-let s:l = 23 - ((22 * winheight(0) + 37) / 74)
+let s:l = 17 - ((16 * winheight(0) + 37) / 74)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-23
-normal! 06|
+17
+normal! 050|
 wincmd w
 argglobal
 edit config/routes.rb
@@ -85,12 +98,29 @@ setlocal fdl=1
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 5 - ((4 * winheight(0) + 37) / 74)
+let s:l = 6 - ((5 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
+6
 normal! 03|
+wincmd w
+argglobal
+edit config/initializers/devise.rb
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=1
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 223 - ((31 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+223
+normal! 028|
 wincmd w
 wincmd =
 tabedit app/assets/javascripts/application.js
@@ -112,12 +142,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 17 - ((16 * winheight(0) + 37) / 74)
+let s:l = 5 - ((4 * winheight(0) + 37) / 74)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-17
-normal! 035|
+5
+normal! 013|
 wincmd w
 argglobal
 edit app/assets/stylesheets/application.css
@@ -175,12 +205,12 @@ setlocal fen
 normal! zo
 2
 normal! zo
-let s:l = 36 - ((26 * winheight(0) + 18) / 37)
+let s:l = 16 - ((15 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-36
-normal! 014|
+16
+normal! 018|
 wincmd w
 argglobal
 edit db/migrate/20170117204809_create_pomodoro_logs.rb
@@ -328,12 +358,12 @@ normal! zo
 normal! zo
 4
 normal! zo
-let s:l = 11 - ((10 * winheight(0) + 18) / 37)
+let s:l = 4 - ((3 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-11
-normal! 03|
+4
+normal! 038|
 wincmd w
 argglobal
 edit app/models/pomodoro_log.rb
@@ -425,7 +455,212 @@ normal! zt
 normal! 032|
 wincmd w
 wincmd =
-tabnext 4
+tabedit app/controllers/tasks_controller.rb
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd w
+set nosplitbelow
+wincmd t
+set winheight=1 winwidth=1
+wincmd =
+argglobal
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=1
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 4 - ((3 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+4
+normal! 04|
+wincmd w
+argglobal
+edit app/views/tasks/new.html.erb
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 2 - ((1 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
+normal! 0
+wincmd w
+argglobal
+edit app/views/tasks/index.html.erb
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 2 - ((1 * winheight(0) + 37) / 74)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
+normal! 023|
+wincmd w
+wincmd =
+tabedit app/views/users/registrations/new.html.erb
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+set nosplitbelow
+wincmd t
+set winheight=1 winwidth=1
+wincmd =
+argglobal
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=5
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+2
+normal! zo
+3
+normal! zo
+4
+normal! zo
+5
+normal! zo
+7
+normal! zo
+11
+normal! zo
+13
+normal! zo
+19
+normal! zo
+24
+normal! zo
+26
+normal! zo
+29
+normal! zo
+35
+normal! zo
+37
+normal! zo
+43
+normal! zo
+53
+normal! zo
+let s:l = 1 - ((0 * winheight(0) + 31) / 63)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 033|
+wincmd w
+argglobal
+edit app/views/users/shared/_links.html.erb
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=2
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 25 - ((12 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+25
+normal! 010|
+wincmd w
+argglobal
+edit config/initializers/assets.rb
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 13 - ((12 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+13
+normal! 0
+wincmd w
+argglobal
+edit app/controllers/application_controller.rb
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=1
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+1
+normal! zo
+7
+normal! zo
+let s:l = 10 - ((5 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+10
+normal! 03|
+wincmd w
+argglobal
+edit app/assets/stylesheets/main.css
+setlocal fdm=expr
+setlocal fde=FoldLevel(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=1
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 9 - ((8 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+9
+normal! 015|
+wincmd w
+5wincmd w
+wincmd =
+tabnext 6
 set stal=1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
