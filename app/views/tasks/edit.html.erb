@@ -1,2 +1,21 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<%= form_for @task, url: task_path(@task),
+  html: {class: "ui form"}, 
+  method: :patch do |t| %>
+  <div class="field">
+    <%= t.label :name %>
+    <%= t.text_field :name %>
+    <%= t.label :priority %>
+    <%= t.select(:priority) do %>
+      <% [["A", 1], ["B", 2], ["C", 3], ["D", 4]].each do |p| -%>
+        <%= content_tag(:option, p.first, value: p.last) %>
+      <% end %>
+    <% end %>
+    <%= t.label :context %>
+    <%= t.collection_select(:contexts, @contexts, :id, :name) %>
+    <%= t.label :project %>
+    <%= t.collection_select(:projects, @projects, :id, :name) %>
+    <%= t.label :due %>
+    <%= t.date_field :due %>
+  </div>
+  <%= t.submit "Save", :class=> 'ui green button' %>
+<% end %>

@@ -1,0 +1,28 @@
+<nav>
+  <ul class="ui vertical tabular fluid menu">
+    <li class="<%=request.original_fullpath == '/tasks' ? 'active item': 'item'%>">
+      <a href="/tasks/new"><i class="green add square icon"></i></a>
+      <a href="/tasks">Tasks</a>
+      <div class="ui left pointing label"><%= current_user.tasks.size %></div> 
+    </li>
+    <li class="<%=request.original_fullpath == '/projects' ? 'active item': 'item'%>">
+      <a href="/projects/new"><i class="green add square icon"></i></a>
+      <a href="/projects">Projects</a>
+      <div class="ui left pointing label"><%= current_user.projects.size %></div> 
+    </li>
+    <li class="<%=request.original_fullpath == '/contexts' ? 'active item': 'item'%>">
+      <a href="/contexts/new"><i class="green add square icon"></i></a>
+      <a href="/contexts">Contexts</a>
+      <div class="ui left pointing label"><%= current_user.contexts.size %></div> 
+    </li>
+    <li class="<%=request.original_fullpath == '/pomodoros' ? 'active item': 'item'%>">
+      <a href="/pomodoros/new"><i class="green add square icon"></i></a>
+      <a href="/pomodoros">Pomodoros</a>
+      <div class="ui left pointing label"><%= current_user.pomodoros.size %></div> 
+    </li>
+    <li class="item">
+      <%= link_to("Log Out", destroy_user_session_path, 
+        :method => :delete) %>
+    </li>
+  </ul>
+</nav>

@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20170117204809) do
 
   create_table "projects_tasks", id: false, force: :cascade do |t|
     t.integer "task_id"
-    t.integer "projects_id"
-    t.index ["projects_id"], name: "index_projects_tasks_on_projects_id"
+    t.integer "project_id"
+    t.index ["project_id"], name: "index_projects_tasks_on_project_id"
     t.index ["task_id"], name: "index_projects_tasks_on_task_id"
   end
 

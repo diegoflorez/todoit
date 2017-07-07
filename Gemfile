@@ -59,4 +59,5 @@ gem 'devise'
 gem 'therubyracer'
 gem 'less-rails-semantic_ui'
 gem 'autoprefixer-rails'
+gem 'better_errors'
 

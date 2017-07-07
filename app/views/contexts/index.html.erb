@@ -1,20 +1,20 @@
-<h1>Projects</h1>
+<h1>Contexts</h1>
  
 <ul class="ui list">
-  <% @projects.each do |project| %>
+  <% @contexts.each do |context| %>
     <li class="item"> 
       <span class="right floated content">
-        <a href=<%="#{projects_path}/#{project.id}"%>
+        <a href=<%="#{contexts_path}/#{context.id}"%>
           data-method="delete">
           <i class="erase red icon"></i>
         </a>
-        <a href=<%=edit_project_path(project.id)%>>
+        <a href=<%=edit_context_path(context.id)%>>
           <i class="edit green icon"></i>
         </a>
       </span>
-      <i class="plus teal icon"></i> 
+      <i class="At teal icon"></i> 
       <span class="content">
-        <%= project.name %>
+        <%= context.name %>
       </span>
     </li>
   <% end %>

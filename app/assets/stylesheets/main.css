@@ -8,3 +8,15 @@ input{
   background: none;
   border: none;
 }
+ul.ui.list .item:before{
+  content: none;
+}
+.item.low{
+  background: green;
+}
+.item.medium{
+  background: orange;
+}
+.item.high{
+  background: red;
+}

@@ -1,2 +1,20 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
+<%= form_for @task, url: {action: "create"},
+  html: {class: "ui form"} do |t| %>
+  <div class="field">
+    <%= t.label :name %>
+    <%= t.text_field :name %>
+    <%= t.label :priority %>
+    <%= t.select(:priority) do %>
+      <% [["A", 1], ["B", 2], ["C", 3], ["D", 4]].each do |p| -%>
+        <%= content_tag(:option, p.first, value: p.last) %>
+      <% end %>
+    <% end %>
+    <%= t.label :context %>
+    <%= t.collection_select(:contexts, @contexts, :id, :name) %>
+    <%= t.label :project %>
+    <%= t.collection_select(:projects, @projects, :id, :name) %>
+    <%= t.label :due %>
+    <%= t.date_select :due %>
+  </div>
+  <%= t.submit "Create", :class=> 'ui green button' %>
+<% end %>

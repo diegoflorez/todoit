@@ -17,7 +17,7 @@ class CreateTasks < ActiveRecord::Migration[5.0]
 
     create_table :projects_tasks, id: false do |t|
       t.belongs_to :task, index: true
-      t.belongs_to :projects, index: true
+      t.belongs_to :project, index: true
     end
   end
 end
