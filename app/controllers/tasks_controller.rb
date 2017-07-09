@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks
   end
-  
+
   def new
     @task = Task.new
     @projects = current_user.projects
@@ -16,9 +16,11 @@ class TasksController < ApplicationController
     @task.user = current_user
     @task.name = @params[:name]
     @task.priority = @params[:priority]
-    @task.contexts << Context.find(@params[:contexts])
-    @task.projects << Project.find(@params[:projects])
-    if @task.save
+    @task.contexts << Context.find(@params[:contexts]) rescue nil
+    @task.projects << Project.find(@params[:projects]) rescue nil
+    if !(Context.exists?(@params[:contexts]))
+        redirect_to new_task_path, :notice => "Can't save the task: fill all the required fields"
+    elsif @task.save
       redirect_to tasks_path
     else
       redirect_to new_task_path
